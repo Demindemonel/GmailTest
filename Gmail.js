@@ -22,10 +22,18 @@ var LastSentMailMessage = element(by.xpath('.//*[@id=":2"]/div/div[3]//tr[1]/td[
 var GoogleAccount = element(by.xpath('//a[starts-with(@title,"Google Account:")]'));
 var LogOuthref = 'https://accounts.google.com/Logout?hl=en&continue=https://mail.google.com/mail&service=mail&timeStmp=1498468873&secTok=.AG5fkS86SZuRsPP6FfHw19-6mbF8z0IyeA';
 
-//var DraftsRecipientesBox = element(by.xpath(''));
-//var DraftsSubjectBox = element(by.xpath('//input[@aria-label=\"Subject\"]'));
 
-//var RecipientesBoxSaved, SubjectBoxSaved, MessageBoxSaved;
+
+
+//Надо найти следующие элементы
+//var DraftsRecipientesBox = element(by.xpath('//form[@id=":6m"]/div[2]/div')); //неверный локатор
+//var DraftsSubjectBox = element(by.xpath('//input[@aria-label=\"Subject\"]'));
+//var DraftsMessageBox = element(by.xpath('//div[@aria-label=\"Message Body\"]'));
+
+
+var RecipientesBoxSaved, SubjectBoxSaved, MessageBoxSaved;
+
+
 
 var Gmail = function(){
     
@@ -83,14 +91,14 @@ var Gmail = function(){
         browser.sleep(sleep);
     }
     
-    //this.CheckDrafts = function(){
-    //    if(RecipientesBoxSaved == DraftsRecipientesBox.getText() && SubjectBoxSaved == DraftsSubjectBox.getText() && MessageBoxSaved == MessageBox.getText()){
-    //        SentMailButton.click(); или так //this.ClickSentMailButton();
-    //        browser.sleep(1000);
+    //this.CheckDrafts = function(RecipientesBoxSaved, SubjectBoxSaved, MessageBoxSaved){
+    //    if(RecipientesBoxSaved === DraftsRecipientesBox.getText() && SubjectBoxSaved === DraftsSubjectBox.getText() && MessageBoxSaved === DraftsMessageBox.getText()){
+    //        SentMailButton.click(); //или так this.ClickSentMailButton();
+    //        browser.sleep(sleep);
     //    }
     //    else{
-    //        console.log('Wrong message');
-    //        browser.close();
+    //        console.log('Wrong message'); //при запуске теста в консоли после Started сразу выдает это сообщение (wtf?!)
+    //        browser.driver.close();
     //    }
     //}
     
