@@ -24,11 +24,15 @@ describe('Test Gmail', function(){
         
         Gmail.ClickDraftsButton();
         Gmail.ClickLastDraftsMessage();
-        //Gmail.CheckDrafts();
+        
+        //Gmail.CheckDrafts(); //Надо сделать
+        
         Gmail.ClickSendButton();
         Gmail.ClickSentMailButton();
         Gmail.ClickLastSentMailMessage();
-        //Gmail.CheckSentmail();
+        
+        //Gmail.CheckSentmail(); Надо сделать
+        
         Gmail.LogOut();
         
         
