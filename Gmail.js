@@ -1,4 +1,4 @@
-browser.ignoreSynchronization = true;
+var sleep = 1000;
 var LoginBox = element(by.id('identifierId'));
 var PasswordBox = element(by.name('password'));
 var NextLoginButton = element(by.id('identifierNext'));
@@ -12,7 +12,7 @@ var SaveAndCloseButton = element(by.xpath('//img[@aria-label=\"Save & Close\"]')
 
 var DraftsButton = element(by.xpath('//a[starts-with(@title,"Drafts")]'));
 var LastDraftsMessage = element(by.xpath('.//*[@id=":2"]/div/div[2]//tr[1]/td[6]'));
-var DraftSubjectField = element(by.xpath('//table[@class="cf Ht"]//td[1]//h2/div[2]'));
+// не использовал var DraftSubjectField = element(by.xpath('//table[@class="cf Ht"]//td[1]//h2/div[2]'));
 var SendButton = element(by.xpath('//div[@aria-label=\"Send ‪(Ctrl-Enter)‬\"]'));
 
 var SentMailButton = element(by.xpath('//a[starts-with(@title,"Sent Mail")]'));
@@ -22,7 +22,10 @@ var LastSentMailMessage = element(by.xpath('.//*[@id=":2"]/div/div[3]//tr[1]/td[
 var GoogleAccount = element(by.xpath('//a[starts-with(@title,"Google Account:")]'));
 var LogOuthref = 'https://accounts.google.com/Logout?hl=en&continue=https://mail.google.com/mail&service=mail&timeStmp=1498468873&secTok=.AG5fkS86SZuRsPP6FfHw19-6mbF8z0IyeA';
 
-var RecipientesBoxSaved, SubjectBoxSaved, MessageBoxSaved;
+//var DraftsRecipientesBox = element(by.xpath(''));
+//var DraftsSubjectBox = element(by.xpath('//input[@aria-label=\"Subject\"]'));
+
+//var RecipientesBoxSaved, SubjectBoxSaved, MessageBoxSaved;
 
 var Gmail = function(){
     
@@ -31,14 +34,14 @@ var Gmail = function(){
     }
     this.ClickNextLoginButton = function(){
         NextLoginButton.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
     }
     this.InputPasswordBox = function(value){
         PasswordBox.sendKeys(value);
     }
     this.ClickNextPasswordButton = function(){
         NextPasswordButton.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
     }
     this.LoadSite = function(value){
         return browser.get(value);
@@ -46,7 +49,7 @@ var Gmail = function(){
     
     this.ClickComposeButton = function(){
         ComposeButton.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
     }
     
     this.InputRecipientesBox = function(value){
@@ -64,25 +67,25 @@ var Gmail = function(){
     
     this.ClickSaveAndCloseButton = function(){
         SaveAndCloseButton.click();
-        browser.sleep(5000)
+        browser.sleep(sleep)
     }
     
     this.ClickDraftsButton = function(){
         DraftsButton.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
     }
     this.ClickLastDraftsMessage = function(){
         LastDraftsMessage.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
     } 
     this.ClickSendButton = function(){
         SendButton.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
     }
     
-    //this.Check = function(){
-    //    if(RecipientesBoxSaved == RecipientesBox.getText() && SubjectBoxSaved == SubjectBox.getText() && MessageBoxSaved == MessageBox.getText()){
-    //        SentMailButton.click();
+    //this.CheckDrafts = function(){
+    //    if(RecipientesBoxSaved == DraftsRecipientesBox.getText() && SubjectBoxSaved == DraftsSubjectBox.getText() && MessageBoxSaved == MessageBox.getText()){
+    //        SentMailButton.click(); или так //this.ClickSentMailButton();
     //        browser.sleep(1000);
     //    }
     //    else{
@@ -90,18 +93,28 @@ var Gmail = function(){
     //        browser.close();
     //    }
     //}
-
+    
+    
+    
+    
+    //this.CheckSentMail = function(){
+    //    
+    //}
+    
+    
+    
+    
     this.ClickSentMailButton = function(){
         SentMailButton.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
     }
     this.ClickLastSentMailMessage = function(){
         LastSentMailMessage.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
     }
     this.LogOut = function(){
         GoogleAccount.click();
-        browser.sleep(5000);
+        browser.sleep(sleep);
         browser.get(LogOuthref);
     }
    
