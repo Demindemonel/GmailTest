@@ -36,13 +36,3 @@ describe('Test Gmail', function(){
         
     })  
 });
-
-//if(element(by.id('headingText')).getText() = 'Sign in'){
-//        Gmail.InputLoginBox(login);
-//        Gmail.ClickNextLoginButton();
-//        Gmail.InputPasswordBox(password);
-//        Gmail.ClickNextPasswordButton();
-//}
-//else{
-//    
-//}
