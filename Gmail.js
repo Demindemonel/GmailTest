@@ -12,7 +12,6 @@ var SaveAndCloseButton = element(by.xpath('//img[@aria-label=\"Save & Close\"]')
 
 var DraftsButton = element(by.xpath('//a[starts-with(@title,"Drafts")]'));
 var LastDraftsMessage = element(by.xpath('.//*[@id=":2"]/div/div[2]//tr[1]/td[6]'));
-// не использовал var DraftSubjectField = element(by.xpath('//table[@class="cf Ht"]//td[1]//h2/div[2]'));
 var SendButton = element(by.xpath('//div[@aria-label=\"Send ‪(Ctrl-Enter)‬\"]'));
 
 var SentMailButton = element(by.xpath('//a[starts-with(@title,"Sent Mail")]'));
@@ -21,8 +20,6 @@ var LastSentMailMessage = element(by.xpath('.//*[@id=":2"]/div/div[3]//tr[1]/td[
 
 var GoogleAccount = element(by.xpath('//a[starts-with(@title,"Google Account:")]'));
 var LogOuthref = 'https://accounts.google.com/Logout?hl=en&continue=https://mail.google.com/mail&service=mail&timeStmp=1498468873&secTok=.AG5fkS86SZuRsPP6FfHw19-6mbF8z0IyeA';
-
-
 
 
 //Надо найти следующие элементы
@@ -90,28 +87,7 @@ var Gmail = function(){
         SendButton.click();
         browser.sleep(sleep);
     }
-    
-    //this.CheckDrafts = function(RecipientesBoxSaved, SubjectBoxSaved, MessageBoxSaved){
-    //    if(RecipientesBoxSaved === DraftsRecipientesBox.getText() && SubjectBoxSaved === DraftsSubjectBox.getText() && MessageBoxSaved === DraftsMessageBox.getText()){
-    //        SentMailButton.click(); //или так this.ClickSentMailButton();
-    //        browser.sleep(sleep);
-    //    }
-    //    else{
-    //        console.log('Wrong message'); //при запуске теста в консоли после Started сразу выдает это сообщение (wtf?!)
-    //        browser.driver.close();
-    //    }
-    //}
-    
-    
-    
-    
-    //this.CheckSentMail = function(){
-    //    
-    //}
-    
-    
-    
-    
+
     this.ClickSentMailButton = function(){
         SentMailButton.click();
         browser.sleep(sleep);
