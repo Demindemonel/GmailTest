@@ -7,9 +7,11 @@ var password = 'qwe123qwe123';
 
 
 describe('Test Gmail', function(){
+    
     var Gmail = require('./Gmail.js');
     
     it('Test with PageObject', function(){
+        
         Gmail.LoadSite(site);
         Gmail.InputLoginBox(login);
         Gmail.ClickNextLoginButton();
@@ -24,6 +26,7 @@ describe('Test Gmail', function(){
         
         Gmail.ClickDraftsButton();
         Gmail.ClickLastDraftsMessage();
+        Gmail.CheckDrafts('dmitryklimenkov@gmail.com', 'SubjectField', 'MessageField');
         Gmail.ClickSendButton();
         Gmail.ClickSentMailButton();
         Gmail.ClickLastSentMailMessage();
