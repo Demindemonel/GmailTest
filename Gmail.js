@@ -21,16 +21,9 @@ var LastSentMailMessage = element(by.xpath('.//*[@id=":2"]/div/div[3]//tr[1]/td[
 var GoogleAccount = element(by.xpath('//a[starts-with(@title,"Google Account:")]'));
 var LogOuthref = 'https://accounts.google.com/Logout?hl=en&continue=https://mail.google.com/mail&service=mail&timeStmp=1498468873&secTok=.AG5fkS86SZuRsPP6FfHw19-6mbF8z0IyeA';
 
-
-//Надо найти следующие элементы
-//var DraftsRecipientesBox = element(by.xpath('//form[@id=":6m"]/div[2]/div')); //неверный локатор
-//var DraftsSubjectBox = element(by.xpath('//input[@aria-label=\"Subject\"]'));
-//var DraftsMessageBox = element(by.xpath('//div[@aria-label=\"Message Body\"]'));
-
-
-var RecipientesBoxSaved, SubjectBoxSaved, MessageBoxSaved;
-
-
+var DraftsRecipientesBox = element(by.xpath('//span[@class="vN bfK a3q"]'));
+var DraftsSubjectBox = element(by.xpath('//input[@name="subject"]'));
+var DraftsMessageBox = element(by.xpath('//div[@aria-label=\"Message Body\"]'));
 
 var Gmail = function(){
     
@@ -59,15 +52,13 @@ var Gmail = function(){
     
     this.InputRecipientesBox = function(value){
         RecipientesBox.sendKeys(value);
-        RecipientesBoxSaved = RecipientesBox.getText();
+            
     }
     this.InputSubjectBox = function(value){
         SubjectBox.sendKeys(value);
-        SubjectBoxSaved = SubjectBox.getText();
     }
     this.InputMessageBox = function(value){
         MessageBox.sendKeys(value);
-        MessageBoxSaved = MessageBox.getText();
     }
     
     this.ClickSaveAndCloseButton = function(){
@@ -79,10 +70,47 @@ var Gmail = function(){
         DraftsButton.click();
         browser.sleep(sleep);
     }
+    //this.ClickLastDraftsMessage = function(){
+    //    LastDraftsMessage.click();
+    //    browser.sleep(sleep);
+    //} 
     this.ClickLastDraftsMessage = function(){
         LastDraftsMessage.click();
-        browser.sleep(sleep);
+        browser.sleep(sleep);        
     } 
+    
+    this.CheckDrafts = function(value1, value2, value3){
+        DraftsRecipientesBox.getAttribute('email').then(function (text) {
+            if (text === value1){
+                console.log('norm1');
+                DraftsSubjectBox.getAttribute('value').then(function(value){
+                    if(value === value2){
+                        console.log('norm2');
+                        DraftsMessageBox.getText().then(function(text){
+                            if(text === value3){
+                            console.log('norm3');
+                            }
+                            else{
+                                console.log('ne norm3');
+                                browser.close();
+                            }
+                        })
+                    }
+                    else{
+                        console.log('ne norm2');
+                        browser.close();
+                    }
+                });
+            }
+            else{
+                console.log('ne norm1');
+                browser.close();
+            }
+        });
+        
+            
+    }
+    
     this.ClickSendButton = function(){
         SendButton.click();
         browser.sleep(sleep);
@@ -95,6 +123,7 @@ var Gmail = function(){
     this.ClickLastSentMailMessage = function(){
         LastSentMailMessage.click();
         browser.sleep(sleep);
+        
     }
     this.LogOut = function(){
         GoogleAccount.click();
